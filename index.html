@@ -3,12 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Opening Your Gift...</title>
+    <title>System Matrix</title>
     <style>
         * { box-sizing: border-box; }
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            font-family: 'Courier New', Courier, monospace;
+            background-color: #0d1117;
+            color: #58a6ff;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -17,77 +18,101 @@
             overflow: hidden;
         }
 
-        /* Loading Screen Styles */
+        /* Hacker Style Loading Terminal */
         #loader-container {
-            text-align: center;
-            transition: opacity 0.5s ease;
+            text-align: left;
+            width: 90%;
+            max-width: 450px;
+            background: #161b22;
+            padding: 30px;
+            border-radius: 8px;
+            border: 1px solid #30363d;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
         }
-        .spinner {
-            border: 4px solid rgba(0, 0, 0, 0.1);
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            border-left-color: #ff4757;
-            animation: spin 1s linear infinite;
-            margin: 0 auto 20px;
-        }
-        .loading-text {
+        .progress-bar {
+            color: #238636;
+            letter-spacing: 2px;
+            margin-bottom: 15px;
             font-size: 1.2rem;
-            color: #555;
-            font-weight: 600;
+            word-break: break-all;
         }
-        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+        .status-text {
+            font-size: 1rem;
+            color: #c9d1d9;
+            font-weight: bold;
+        }
+        .status-text::after {
+            content: '...';
+            animation: blink 1.5s infinite;
+        }
 
-        /* Surprise Message Styles (Hidden by default) */
+        /* Final Page Styles (Hidden by default) */
         #surprise-container {
             display: none;
             text-align: center;
-            animation: popIn 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+            background: #161b22;
+            padding: 40px;
+            border-radius: 12px;
+            border: 1px solid #30363d;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            max-width: 90%;
+            width: 500px;
+            animation: fadeIn 0.5s ease-in-out forwards;
         }
         h1 {
-            font-size: 3.5rem;
-            color: #ff4757;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
-            margin-bottom: 10px;
+            font-size: 2.5rem;
+            color: #ff79c6;
+            margin-bottom: 20px;
         }
         p {
-            font-size: 1.5rem;
-            color: #333;
+            font-size: 1.2rem;
+            color: #f8f8f2;
+            line-height: 1.6;
         }
-        .confetti { font-size: 4rem; animation: bounce 1s infinite alternate; }
+        .highlight {
+            color: #50fa7b;
+            font-weight: bold;
+        }
 
-        @keyframes popIn {
-            0% { opacity: 0; transform: scale(0.5); }
-            100% { opacity: 1; transform: scale(1); }
-        }
-        @keyframes bounce {
-            0% { transform: translateY(0); }
-            100% { transform: translateY(-15px); }
-        }
+        @keyframes blink { 0%, 100% { opacity: 0; } 50% { opacity: 1; } }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
     </style>
 </head>
 <body>
 
     <div id="loader-container">
-        <div class="spinner"></div>
-        <div class="loading-text">Unwrapping your surprise... Please wait...</div>
+        <div class="progress-bar">████████████████████</div>
+        <div id="status" class="status-text">Scanning Image</div>
     </div>
 
     <div id="surprise-container">
-        <div class="confetti">🎉 🎂 🎁</div>
-        <h1>Happy Birthday!</h1>
-        <p>Wishing you an amazing day filled with love, laughter, and joy!</p>
+        <h1>🎉 Congratulations!</h1>
+        <p>You clicked because you were curious.</p>
+        <p>The <span class="highlight">birthdayboy</span> counted on exactly that.</p>
     </div>
 
     <script>
-        // Wait 4 seconds (4000 milliseconds) then swap screens
+        const statusElement = document.getElementById('status');
+        const loaderContainer = document.getElementById('loader-container');
+        const surpriseContainer = document.getElementById('surprise-container');
+
+        // Step 1: "Scanning Image..." runs immediately for 2 seconds.
+
+        // Step 2: After 2 seconds, switch to "Analyzing Data..."
         setTimeout(() => {
-            const loader = document.getElementById('loader-container');
-            const surprise = document.getElementById('surprise-container');
-            
-            loader.style.display = 'none';
-            surprise.style.display = 'block';
+            statusElement.textContent = "Analyzing Data";
+        }, 2000);
+
+        // Step 3: After 4 seconds total, switch to "Decrypting..."
+        setTimeout(() => {
+            statusElement.textContent = "Decrypting";
         }, 4000);
+
+        // Step 4: After 6 seconds total, load the final page
+        setTimeout(() => {
+            loaderContainer.style.display = 'none';
+            surpriseContainer.style.display = 'block';
+        }, 6000);
     </script>
 </body>
 </html>
