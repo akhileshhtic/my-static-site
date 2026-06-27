@@ -35,6 +35,7 @@
             margin-bottom: 15px;
             font-size: 1.2rem;
             word-break: break-all;
+            min-height: 1.5rem;
         }
         .status-text {
             font-size: 1rem;
@@ -81,7 +82,7 @@
 <body>
 
     <div id="loader-container">
-        <div class="progress-bar">████████████████████</div>
+        <div id="bar" class="progress-bar">░░░░░░░░░░░░░░░░░░░░</div>
         <div id="status" class="status-text">Scanning Image</div>
     </div>
 
@@ -92,23 +93,28 @@
     </div>
 
     <script>
+        const barElement = document.getElementById('bar');
         const statusElement = document.getElementById('status');
         const loaderContainer = document.getElementById('loader-container');
         const surpriseContainer = document.getElementById('surprise-container');
 
-        // Step 1: "Scanning Image..." runs immediately for 2 seconds.
+        // 0 Seconds: Starting point (30% loaded)
+        // [Scanning Image...] 
+        barElement.textContent = "██████░░░░░░░░░░░░░░";
 
-        // Step 2: After 2 seconds, switch to "Analyzing Data..."
+        // 2 Seconds: Progress updates (65% loaded)
         setTimeout(() => {
+            barElement.textContent = "█████████████░░░░░░░";
             statusElement.textContent = "Analyzing Data";
         }, 2000);
 
-        // Step 3: After 4 seconds total, switch to "Decrypting..."
+        // 4 Seconds: Progress updates (100% full)
         setTimeout(() => {
+            barElement.textContent = "████████████████████";
             statusElement.textContent = "Decrypting";
         }, 4000);
 
-        // Step 4: After 6 seconds total, load the final page
+        // 6 Seconds: Hide loader and open the final page
         setTimeout(() => {
             loaderContainer.style.display = 'none';
             surpriseContainer.style.display = 'block';
