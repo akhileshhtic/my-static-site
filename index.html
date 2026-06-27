@@ -1,6 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-CN3SK0MQSK"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'G-CN3SK0MQSK');
+    </script>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>System Matrix</title>
@@ -100,17 +109,16 @@
         <p><span class="highlight">Cybercriminals</span> counted on exactly that.</p>
         
         <div class="extra-content">
-            <p>Curiosity is one of the strongest tools used by attackers. 
-                Modern phishing attacks hide: 
-                ✓ Links inside images 
+            <p>Curiosity is one of the strongest tools used by attackers. </p>
+               <p> Modern phishing attacks hide: </p>
+                <p>✓ Links inside images 
                 ✓ Fake buttons ✓ QR Codes 
                 ✓ AI-generated invoices 
-                ✓ Hidden content
-                Think before you click. 😎</p>
+                ✓ Hidden content</p>
+                <p>Think before you click. 😎</p>
             <p>You just experienced...</p>
             <p class="highlight"> Social Engineering</p>
         </div>
-    </div>
 
     <script>
         const barElement = document.getElementById('bar');
@@ -121,7 +129,6 @@
         const totalBlocks = 20; 
         let currentBlocks = 0;
 
-        // Smooth progression from 0 to 20 blocks
         const progressInterval = setInterval(() => {
             currentBlocks++;
             
@@ -129,7 +136,6 @@
             let empty = "░".repeat(totalBlocks - currentBlocks);
             barElement.textContent = filled + empty;
 
-            // Change texts dynamically based on blocks loaded
             if (currentBlocks === 7) {
                 statusElement.textContent = "Analyzing Data";
             } else if (currentBlocks === 14) {
@@ -142,7 +148,7 @@
                 setTimeout(() => {
                     loaderContainer.style.display = 'none';
                     surpriseContainer.style.display = 'block';
-                }, 1500); // Changed to 1.5 seconds so they don't wait too long at the end!
+                }, 1500);
             }
         }, 300); 
     </script>
