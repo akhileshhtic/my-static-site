@@ -69,10 +69,18 @@
             font-size: 1.2rem;
             color: #f8f8f2;
             line-height: 1.6;
+            margin: 10px 0;
         }
         .highlight {
             color: #50fa7b;
             font-weight: bold;
+        }
+        .extra-content {
+            margin-top: 25px;
+            padding-top: 20px;
+            border-top: 1px dashed #30363d;
+            color: #8b949e;
+            font-size: 1rem;
         }
 
         @keyframes blink { 0%, 100% { opacity: 0; } 50% { opacity: 1; } }
@@ -90,6 +98,12 @@
         <h1>🎉 Congratulations!</h1>
         <p>You clicked because you were curious.</p>
         <p><span class="highlight">Cybercriminals</span> counted on exactly that.</p>
+        
+        <div class="extra-content">
+            <p>You just experienced a modern AI display. 😎</p>
+            <p>To enjoy more, please call me bro!</p>
+            <p class="highlight">Also, don't forget my treat! 🍰🍟</p>
+        </div>
     </div>
 
     <script>
@@ -116,321 +130,15 @@
                 statusElement.textContent = "Decrypting";
             }
 
-            // End behavior fixed here
             if (currentBlocks >= totalBlocks) {
                 clearInterval(progressInterval);
                 
                 setTimeout(() => {
                     loaderContainer.style.display = 'none';
                     surpriseContainer.style.display = 'block';
-                }, 4000); // 4-second dramatic pause on complete bar before surprise loads
+                }, 1500); // Changed to 1.5 seconds so they don't wait too long at the end!
             }
         }, 300); 
-        <!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Cyber Awareness</title>
-
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
-
-<style>
-
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-font-family:'Poppins',sans-serif;
-}
-
-body{
-
-background:#050816;
-overflow:hidden;
-color:white;
-
-}
-
-.page{
-
-position:absolute;
-width:100%;
-height:100vh;
-
-display:flex;
-justify-content:center;
-align-items:center;
-
-transition:1.5s;
-
-}
-
-#page2{
-
-opacity:0;
-visibility:hidden;
-
-}
-
-.card{
-
-width:850px;
-
-background:rgba(255,255,255,.05);
-
-border:1px solid rgba(0,255,255,.2);
-
-backdrop-filter:blur(12px);
-
-padding:50px;
-
-border-radius:25px;
-
-box-shadow:0 0 40px rgba(0,255,255,.15);
-
-text-align:center;
-
-animation:zoom 1.2s ease;
-
-}
-
-@keyframes zoom{
-
-from{
-opacity:0;
-transform:scale(.8);
-}
-
-to{
-opacity:1;
-transform:scale(1);
-}
-
-}
-
-h1{
-
-font-size:42px;
-color:#00F5FF;
-margin-bottom:25px;
-
-}
-
-.subtitle{
-
-font-size:24px;
-
-font-weight:300;
-
-margin-bottom:35px;
-
-line-height:40px;
-
-}
-
-.list{
-
-text-align:left;
-
-display:inline-block;
-
-font-size:24px;
-
-line-height:55px;
-
-margin-top:20px;
-
-}
-
-.list span{
-
-color:#00ff99;
-
-font-weight:bold;
-
-}
-
-.footer{
-
-margin-top:40px;
-
-font-size:28px;
-
-font-weight:600;
-
-color:#FFD54F;
-
-}
-
-.big{
-
-font-size:70px;
-
-font-weight:700;
-
-color:#00F5FF;
-
-text-shadow:0 0 30px cyan;
-
-}
-
-.small{
-
-margin-top:30px;
-
-font-size:30px;
-
-color:#ddd;
-
-}
-
-.glow{
-
-position:absolute;
-
-width:450px;
-height:450px;
-
-background:cyan;
-
-filter:blur(220px);
-
-opacity:.12;
-
-border-radius:50%;
-
-top:-120px;
-
-right:-120px;
-
-}
-
-.glow2{
-
-position:absolute;
-
-width:400px;
-height:400px;
-
-background:#0077ff;
-
-filter:blur(220px);
-
-opacity:.12;
-
-bottom:-150px;
-
-left:-150px;
-
-}
-
-.fade{
-
-animation:fadeIn 2s;
-
-}
-
-@keyframes fadeIn{
-
-from{
-
-opacity:0;
-
-transform:translateY(40px);
-
-}
-
-to{
-
-opacity:1;
-
-transform:translateY(0);
-
-}
-
-}
-
-</style>
-
-</head>
-
-<body>
-
-<div class="glow"></div>
-<div class="glow2"></div>
-
-<!-- PAGE 1 -->
-
-<div id="page1" class="page">
-
-<div class="card">
-
-<h1>Today's Lesson</h1>
-
-<div class="subtitle">
-
-Curiosity is one of the strongest tools used by attackers.
-
-</div>
-
-<div class="list">
-
-<div><span>✓</span> Links inside images</div>
-
-<div><span>✓</span> Fake buttons</div>
-
-<div><span>✓</span> QR Codes</div>
-
-<div><span>✓</span> AI-generated invoices</div>
-
-<div><span>✓</span> Hidden content (Steganography)</div>
-
-</div>
-
-<div class="footer">
-
-💡 Think Before You Click.
-
-</div>
-
-</div>
-
-</div>
-
-<!-- PAGE 2 -->
-
-<div id="page2" class="page">
-
-<div class="card fade">
-
-<div class="big">
-
-You just experienced...
-
-</div>
-
-<div class="small">
-
-SOCIAL ENGINEERING
-
-</div>
-
-</div>
-
-</div>
-
-<script>
-
-setTimeout(function(){
-
-document.getElementById("page1").style.opacity="0";
-document.getElementById("page1").style.visibility="hidden";
-
-document.getElementById("page2").style.opacity="1";
-document.getElementById("page2").style.visibility="visible";
-
-},7000);
     </script>
 </body>
 </html>
