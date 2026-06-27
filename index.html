@@ -1,1 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Opening Your Gift...</title>
+    <style>
+        * { box-sizing: border-box; }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            overflow: hidden;
+        }
 
+        /* Loading Screen Styles */
+        #loader-container {
+            text-align: center;
+            transition: opacity 0.5s ease;
+        }
+        .spinner {
+            border: 4px solid rgba(0, 0, 0, 0.1);
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            border-left-color: #ff4757;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 20px;
+        }
+        .loading-text {
+            font-size: 1.2rem;
+            color: #555;
+            font-weight: 600;
+        }
+        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+
+        /* Surprise Message Styles (Hidden by default) */
+        #surprise-container {
+            display: none;
+            text-align: center;
+            animation: popIn 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+        }
+        h1 {
+            font-size: 3.5rem;
+            color: #ff4757;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+            margin-bottom: 10px;
+        }
+        p {
+            font-size: 1.5rem;
+            color: #333;
+        }
+        .confetti { font-size: 4rem; animation: bounce 1s infinite alternate; }
+
+        @keyframes popIn {
+            0% { opacity: 0; transform: scale(0.5); }
+            100% { opacity: 1; transform: scale(1); }
+        }
+        @keyframes bounce {
+            0% { transform: translateY(0); }
+            100% { transform: translateY(-15px); }
+        }
+    </style>
+</head>
+<body>
+
+    <div id="loader-container">
+        <div class="spinner"></div>
+        <div class="loading-text">Unwrapping your surprise... Please wait...</div>
+    </div>
+
+    <div id="surprise-container">
+        <div class="confetti">🎉 🎂 🎁</div>
+        <h1>Happy Birthday!</h1>
+        <p>Wishing you an amazing day filled with love, laughter, and joy!</p>
+    </div>
+
+    <script>
+        // Wait 4 seconds (4000 milliseconds) then swap screens
+        setTimeout(() => {
+            const loader = document.getElementById('loader-container');
+            const surprise = document.getElementById('surprise-container');
+            
+            loader.style.display = 'none';
+            surprise.style.display = 'block';
+        }, 4000);
+    </script>
+</body>
+</html>
