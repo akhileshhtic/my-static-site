@@ -101,33 +101,31 @@
         const totalBlocks = 20; 
         let currentBlocks = 0;
 
-        // Function that runs every 300ms to smoothly build the bar from 0 to 20 blocks
+        // Smooth progression from 0 to 20 blocks
         const progressInterval = setInterval(() => {
             currentBlocks++;
             
-            // Build the string: filled blocks up front, empty blocks at the back
             let filled = "█".repeat(currentBlocks);
             let empty = "░".repeat(totalBlocks - currentBlocks);
             barElement.textContent = filled + empty;
 
-            // Change the status text smoothly based on how far along it is
+            // Change texts dynamically based on blocks loaded
             if (currentBlocks === 7) {
                 statusElement.textContent = "Analyzing Data";
             } else if (currentBlocks === 14) {
                 statusElement.textContent = "Decrypting";
             }
 
-            // Once it hits 100% (20 blocks), stop the timer and open the surprise page
+            // End behavior fixed here
             if (currentBlocks >= totalBlocks) {
                 clearInterval(progressInterval);
                 
                 setTimeout(() => {
-                    loaderContainer.style.style.transition = "opacity 0.3s";
                     loaderContainer.style.display = 'none';
                     surpriseContainer.style.display = 'block';
-                }, 500); // Small pause at 100% for dramatic effect
+                }, 4000); // 4-second dramatic pause on complete bar before surprise loads
             }
-        }, 300); // 300ms per block = roughly 6 seconds total loading time
+        }, 300); 
     </script>
 </body>
 </html>
