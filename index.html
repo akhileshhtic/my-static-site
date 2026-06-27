@@ -98,27 +98,36 @@
         const loaderContainer = document.getElementById('loader-container');
         const surpriseContainer = document.getElementById('surprise-container');
 
-        // 0 Seconds: Starting point (30% loaded)
-        // [Scanning Image...] 
-        barElement.textContent = "██████░░░░░░░░░░░░░░";
+        const totalBlocks = 20; 
+        let currentBlocks = 0;
 
-        // 2 Seconds: Progress updates (65% loaded)
-        setTimeout(() => {
-            barElement.textContent = "█████████████░░░░░░░";
-            statusElement.textContent = "Analyzing Data";
-        }, 2000);
+        // Function that runs every 300ms to smoothly build the bar from 0 to 20 blocks
+        const progressInterval = setInterval(() => {
+            currentBlocks++;
+            
+            // Build the string: filled blocks up front, empty blocks at the back
+            let filled = "█".repeat(currentBlocks);
+            let empty = "░".repeat(totalBlocks - currentBlocks);
+            barElement.textContent = filled + empty;
 
-        // 4 Seconds: Progress updates (100% full)
-        setTimeout(() => {
-            barElement.textContent = "████████████████████";
-            statusElement.textContent = "Decrypting";
-        }, 4000);
+            // Change the status text smoothly based on how far along it is
+            if (currentBlocks === 7) {
+                statusElement.textContent = "Analyzing Data";
+            } else if (currentBlocks === 14) {
+                statusElement.textContent = "Decrypting";
+            }
 
-        // 6 Seconds: Hide loader and open the final page
-        setTimeout(() => {
-            loaderContainer.style.display = 'none';
-            surpriseContainer.style.display = 'block';
-        }, 6000);
+            // Once it hits 100% (20 blocks), stop the timer and open the surprise page
+            if (currentBlocks >= totalBlocks) {
+                clearInterval(progressInterval);
+                
+                setTimeout(() => {
+                    loaderContainer.style.style.transition = "opacity 0.3s";
+                    loaderContainer.style.display = 'none';
+                    surpriseContainer.style.display = 'block';
+                }, 500); // Small pause at 100% for dramatic effect
+            }
+        }, 300); // 300ms per block = roughly 6 seconds total loading time
     </script>
 </body>
 </html>
